@@ -1,5 +1,0 @@
-# Notes Lima Txt
-
-[2026-02-20 06:28:56] sistem berjalan normal
-[2026-02-20 06:28:56] validasi input: OK
-[2026-02-20 06:28:56] sesi ditutup dengan bersih
