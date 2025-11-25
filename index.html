@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Detection - Deteksi Jenis Awan</title>
+
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.0.0 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- GSAP 3.12.2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Background Video -->
+    <video
+      id="background-video"
+      class="background-video"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src="src/video/Cerah.mp4" type="video/mp4" />
+    </video>
+
+    <div class="container">
+      <header class="header">
+        <h1 class="title">
+          <i class="fas fa-cloud"></i>
+          Cloud Detection
+        </h1>
+        <p class="subtitle">Deteksi Jenis Awan dengan model TensorFlow.js</p>
+      </header>
+
+      <main class="main-content">
+        <!-- Input Section -->
+        <section class="input-section glass-card">
+          <h2 class="section-title">
+            <i class="fas fa-camera"></i>
+            Input Gambar
+          </h2>
+
+          <div class="input-options">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="webcam-btn"
+              onclick="initWebcam()"
+            >
+              <i class="fas fa-video"></i>
+              <span>Gunakan Webcam</span>
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="upload-btn"
+              onclick="document.getElementById('file-input').click()"
+            >
+              <i class="fas fa-upload"></i>
+              <span>Upload Gambar</span>
+            </button>
+            <input
+              type="file"
+              id="file-input"
+              accept="image/*"
+              style="display: none"
+              onchange="handleFileUpload(event)"
+            />
+          </div>
+
+          <div id="webcam-container" class="webcam-container"></div>
+
+          <div id="image-preview" class="image-preview"></div>
+
+          <div
+            class="control-buttons"
+            id="control-buttons"
+            style="display: none"
+          >
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="stop-btn"
+              onclick="stopWebcam()"
+            >
+              <i class="fas fa-stop"></i>
+              <span>Stop Webcam</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Prediction Section -->
+        <section
+          class="prediction-section glass-card"
+          id="prediction-section"
+          style="display: none"
+        >
+          <h2 class="section-title">
+            <i class="fas fa-chart-line"></i>
+            Hasil Prediksi
+          </h2>
+
+          <div id="label-container" class="label-container"></div>
+        </section>
+
+        <!-- Cloud Explanation Section -->
+        <section
+          class="explanation-section glass-card"
+          id="explanation-section"
+          style="display: none"
+        >
+          <h2 class="section-title">
+            <i class="fas fa-info-circle"></i>
+            Penjelasan Awan
+          </h2>
+
+          <div id="cloud-explanation" class="cloud-explanation"></div>
+        </section>
+
+        <!-- Weather Prediction Section -->
+        <section
+          class="weather-prediction-section glass-card"
+          id="weather-prediction-section"
+          style="display: none"
+        >
+          <h2 class="section-title">
+            <i class="fas fa-cloud-sun"></i>
+            Prediksi Cuaca
+          </h2>
+
+          <div id="weather-prediction" class="weather-prediction"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Powered by TensorFlow.js & Teachable Machine</p>
+        <p>Created by Muhammad Alif Qadri</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
