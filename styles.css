@@ -41,7 +41,7 @@ body::before {
 }
 
 body.video-background::before {
-    opacity: 0;
+    opacity: 1;
 }
 
 /* Background Video */
@@ -64,8 +64,7 @@ body.video-background::before {
 }
 
 body.video-background {
-    background: transparent;
-}
+    background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
 
 body.video-background::after {
     content: '';
