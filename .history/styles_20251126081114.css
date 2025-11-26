@@ -52,12 +52,6 @@ body::before {
 }
 
 body.video-background::before {
-  opacity: 1;
-  transition: opacity 1s ease 0.5s;
-}
-
-/* Fade out gradient only when video is loaded and playing */
-body.video-background.video-ready::before {
   opacity: 0;
 }
 
@@ -81,7 +75,7 @@ body.video-background.video-ready::before {
 }
 
 body.video-background {
-  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  background: transparent;
 }
 
 body.video-background::after {

@@ -53,11 +53,16 @@ body::before {
 
 body.video-background::before {
   opacity: 1;
-  transition: opacity 1s ease 0.5s;
+  transition: opacity 1s ease;
 }
 
-/* Fade out gradient only when video is loaded and playing */
-body.video-background.video-ready::before {
+body.video-background .background-video.active ~ *::before,
+body.video-background .background-video.active + *::before {
+  opacity: 0;
+}
+
+/* Fade out gradient only when video is actually playing */
+body.video-background:has(.background-video.active[readyState >= 2])::before {
   opacity: 0;
 }
 

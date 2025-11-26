@@ -360,9 +360,6 @@ function stopWebcam() {
   // Reset background video
   controlBackgroundVideo("", "");
 
-  // Remove video-ready class to show gradient again
-  document.body.classList.remove("video-ready");
-
   // Clear video change timer
   if (videoChangeTimer) {
     clearTimeout(videoChangeTimer);
@@ -637,20 +634,16 @@ function applyBackgroundVideoChange(videoPath) {
     if (source && source.src !== videoPath) {
       source.src = videoPath;
       video.load();
-
+      
       // Wait for video to be ready before fading out gradient
-      video.addEventListener(
-        "loadeddata",
-        function () {
-          body.classList.add("video-ready");
-        },
-        { once: true }
-      );
+      video.addEventListener('loadeddata', function() {
+        body.classList.add("video-ready");
+      }, { once: true });
     } else {
       // Video already loaded, fade out gradient immediately
       body.classList.add("video-ready");
     }
-
+    
     video.classList.add("active");
     body.classList.add("video-background");
     // Ensure video is playing
